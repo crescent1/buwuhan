@@ -16,7 +16,7 @@
                 </div>
                 <div class="card-body">
                   <div class="fc-overflow">
-                    <div id="myEvent"> sss</div>
+                    <div id="myEvent">Belum Terisi</div>
                   </div>
                 </div>
               </div>
