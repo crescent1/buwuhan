@@ -1,0 +1,92 @@
+/**
+ *
+ * You can write your CSS code here, DO NOT touch the default JavaScript file
+ * because it will make it harder for you to update.
+ *
+ */
+
+/* # sourceMappingURL=custom.css.map */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+.sz-color {
+    font-weight: bold;
+    font-style: italic;
+    color: #98a1df;
+}
+
+.sz-success {
+    font-weight: bold;
+    font-style: italic;
+    color: #33f854;
+}
+
+.sz-error {
+    font-weight: bold;
+    font-style: italic;
+    color: red;
+}
+
+.sz-sp {
+    color: red;
+}
+
+.sz-fontTitle {
+    font-family: 'Noto Sans', sans-serif;
+    color: black;
+}
+
+.sz-logoImg {
+    height: 100%;
+    width: 90%;
+}
+
+.sz-logoTtd {
+    height: 70%;
+    width: 94%;
+}
+
+.sz-borderheader {
+    border-width: 2px !important;
+    border-color:rgb(199, 106, 19) !important
+}
+
+.sz-borderheader2 {
+    border-width: 1px !important;
+    border-color:rgb(60, 131, 212) !important
+}
+
+.sz-borderheader3 {
+    border-width: 2px !important;
+    border-color:rgb(0, 0, 0) !important
+}
+
+.sz-tableColor {
+    color: black;
+    background-color: rgb(228, 121, 44);
+
+}
+
+.sz-background {
+    background-color: white !important;
+}
+
+.sz-iconHome{
+    font-size: 2em !important; /*size whatever you like*/
+}
+
+table.sz-table-bordered {
+    border:1px solid black;
+}
+
+table.sz-table-bordered > thead > tr > th {
+    border:1px solid black;
+}
+table.sz-table-bordered > tbody > tr > td {
+    border:1px solid black;
+}
+
+
+.sz-section {
+    position: static !important;
+}
