@@ -44,9 +44,6 @@
                                     <i class="fas fa-sign-in-alt"></i> LOGIN
                                 </button>
                             </div>
-                            {{-- <div class="text-center">
-                                <a class="text-secondary" href="{{ route('dashboard') }}"><i class="fas fa-home sz-iconHome"></i></a>
-                            </div> --}}
                         </form>
                     </div>
                 </div>
@@ -59,14 +56,6 @@
             </div>
         </div>
     </div>
-  </section>
-
+</section>
 
 @endsection
-
-{{-- @section('styles')
-
-    <link rel="stylesheet" href="{{ url('/') }}/assets/css/custom.css">
-
-@endsection --}}
-
