@@ -2,7 +2,7 @@
 
 @section('maincontent')
 
-<section class="section">
+<section class="section sz-section">
     <div class="section-header">
         <h1>Users</h1>
         <div class="section-header-breadcrumb">
@@ -16,9 +16,6 @@
         <div class="col-12 col-sm-12 col-lg-12">
             <h2 class="section-title">Users</h2>
             <div class="card">
-                {{-- <div class="card-header">
-
-                </div> --}}
                 <div class="card-body">
                     @livewire('dashboard.user.index')
                 </div>
@@ -41,7 +38,7 @@
 
     @livewireStyles
 
-    {{-- <link rel="stylesheet" href="{{ url('/') }}/assets/css/custom.css"> --}}
+    <link rel="stylesheet" href="{{ url('/') }}/assets/css/custom.css">
 
 @endsection
 

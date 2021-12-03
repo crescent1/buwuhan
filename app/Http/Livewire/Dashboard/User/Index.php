@@ -19,4 +19,15 @@ class Index extends Component
             'users' => User::paginate(1),
         ]);
     }
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function showAddUser()
+    {
+        $this->dispatchBrowserEvent('showModalUser');
+
+    }
 }
