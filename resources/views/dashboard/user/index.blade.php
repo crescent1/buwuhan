@@ -20,42 +20,7 @@
 
                 </div> --}}
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped" id="sortable-table">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Status</th>
-                                    <th colspan="2" ></th>
-                                </tr>
-                            </thead>
-                            {{-- <tbody>
-                                @foreach ($listUser as $user)
-                                <tr>
-                                    <td>{{ $loop->index + $listUser->firstItem() }}</td>
-                                    <td>{{ strtoupper($user->name) }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ ucwords(\App\Enums\UserType::fromValue($user->type)->description) }}</td>
-                                    <td>
-                                        @if ($user->type == $authUser->id || $authUser->type == 1)
-                                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-outline-info"><i class="fas fa-user-edit"></i></a>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($user->id !== 1 && $authUser->type == 1 && $user->id !== $authUser->id)
-                                        <form action="{{ route('user.destroy', $user->id) }}" method="POST">
-                                            @csrf
-                                            <button type="submit" href="" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
-                                        </form>
-                                        @endif
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody> --}}
-                        </table>
-                    </div>
+                    @livewire('dashboard.user.index')
                 </div>
                 <div class="card-footer text-right">
                     <nav aria-label="Page navigation example">
