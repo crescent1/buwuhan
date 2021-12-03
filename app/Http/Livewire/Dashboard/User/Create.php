@@ -48,7 +48,7 @@ class Create extends Component
             'name' => 'required|min:3|max:100',
             'email' => 'required|email|unique:users',
             'type' => 'required',
-            'password' => 'required'
+            'password' => 'required|min:6'
         ])->validate();
 
         $validData['status'] = '1';
@@ -58,6 +58,6 @@ class Create extends Component
         $this->dispatchBrowserEvent('hideModalUser');
         $this->state = [];
 
-        return redirect()->route('user.index')->with('newUser', 'User berhasil ditambah.') ;
+        return redirect()->route('user.index')->with('newUser', 'User berhasil ditambah.');
     }
 }

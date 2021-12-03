@@ -16,8 +16,8 @@
         </div>
     @endif
 
-    {{-- modal --}}
-    <div class="modal fade" tabindex="-1" role="dialog" id="userModal" wire:ignore.self>
+    {{-- modal create --}}
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalCreate" wire:ignore.self>
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <form wire:submit.prevent="addUser" autocomplete="off" class="needs-validation" novalidate="">
@@ -117,25 +117,10 @@
                     </div>
                     <div class="modal-footer bg-whitesmoke br">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-plus-circle"></i> Add</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-@section('specificts')
-
-    <script>
-        window.addEventListener('showModalUser', event => {
-            $('#userModal').modal('show');
-        })
-
-        window.addEventListener('hideModalUser', event => {
-            $('#userModal').modal('hide');
-        })
-
-    </script>
-
-@endsection

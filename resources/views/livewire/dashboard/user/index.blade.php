@@ -1,4 +1,15 @@
 <div>
+    @if (session()->has('deleteUser'))
+        <div class="alert alert-danger alert-dismissible show fade col-lg-5 col md-5">
+            <div class="alert-body">
+                <button class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                </button>
+                <i class="far fa-lightbulb"></i> {{ session('deleteUser') }}
+            </div>
+        </div>
+    @endif
+
     <div class="table-responsive mt-2">
         <table class="table table-striped" id="sortable-table">
             <thead>
@@ -19,7 +30,9 @@
                     <td>{{ ucwords(\App\Enums\UserType::fromValue($user->type)->description) }}</td>
                     <td>
                         <button type="button" href="" class="btn btn-outline-info"><i class="fas fa-user-edit"></i></button>
-                        <button type="button" href="" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+                        <button type="button" href="" class="btn btn-outline-danger"
+                            wire:click="showDeleteUser({{$user->id}})"
+                        ><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>
                 @endforeach
@@ -34,5 +47,165 @@
         </nav>
     </div>
 
+    {{-- Modal Delete --}}
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalDelete" wire:ignore.self>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger alert-has-icon">
+                        <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+                        <div class="alert-body">
+                        <div class="alert-title">Peringatan</div>
+                            Apakah anda yakin ingin menghapus data ini?
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-whitesmoke br">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger"
+                        wire:click.prevent="deleteUser"
+                    ><i class="fas fa-trash-alt"></i> Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{-- modal edit --}}
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalEdit" wire:ignore.self>
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">User Name</label>
+                                <div class="col-sm-9">
+                                    <input
+                                        type="text"
+                                        class="form-control @error('name') is-invalid @enderror"
+                                        required
+                                        minlength="3"
+                                        maxlength="100"
+                                        name="name"
+                                        value="{{old('name')}}"
+                                        placeholder="ex: my name"
+                                        wire:model="state.name"
+                                    >
+                                    @error('name')
+                                        <small id="" class="sz-error">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">User Email</label>
+                                <div class="col-sm-9">
+                                    <input
+                                        type="email"
+                                        class="form-control @error('email') is-invalid @enderror"
+                                        required
+                                        autocomplete="off"
+                                        name="email"
+                                        value="{{old('email')}}"
+                                        placeholder="ex: myname@gmail.com"
+                                        wire:model="state.email"
+                                    >
+                                    @error('email')
+                                        <small id="" class="sz-error">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">User Status</label>
+                                <div class="col-sm-9">
+                                    <select
+                                        class="form-control @error('type') is-invalid @enderror"
+                                        required
+                                        name="type"
+                                        wire:model="state.type"
+                                    >
+                                        <option value="">. . .</option>
+                                        <option {{ old('type') == "0"? 'selected':''}} value="{{ \App\Enums\UserType::Administrator }}">Administrator</option>
+                                        <option {{ old('type') == "1"? 'selected':''}} value="{{ \App\Enums\UserType::User }}">User</option>
+                                    </select>
+                                    @error('type')
+                                        <small id="" class="sz-error">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">User Password</label>
+                                <div class="col-sm-9">
+                                    <input
+                                        type="password"
+                                        class="form-control @error('password') is-invalid @enderror"
+                                        required
+                                        autocomplete="new-password"
+                                        name="password"
+                                        value="{{old('password')}}"
+                                        wire:model="state.password"
+                                    >
+                                    @error('password')
+                                        <small id="" class="sz-error">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-whitesmoke br">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger"
+                        wire:click.prevent="deleteUser"
+                    ><i class="fas fa-trash-alt"></i> Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
+@section('specificts')
+
+    <script>
+        window.addEventListener('showModalUser', event => {
+            $('#modalCreate').modal('show');
+        })
+
+        window.addEventListener('hideModalUser', event => {
+            $('#modalCreate').modal('hide');
+        })
+
+        window.addEventListener('showRemoveModal', event => {
+            $('#modalDelete').modal('show');
+        })
+
+        window.addEventListener('hideRemoveModal', event => {
+            $('#modalDelete').modal('hide');
+        })
+
+    </script>
+
+@endsection

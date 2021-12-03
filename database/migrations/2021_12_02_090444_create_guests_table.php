@@ -17,6 +17,7 @@ class CreateGuestsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('agenda_id');
             $table->unsignedBigInteger('user_id');
+            $table->string('gender')->default('');
             $table->string('name')->default('');
             $table->string('district')->default('');
             $table->decimal('money', 12, 2)->default(0);
