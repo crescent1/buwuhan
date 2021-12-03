@@ -17,7 +17,9 @@
             <h2 class="section-title">Users</h2>
             <div class="card">
                 <div class="card-body">
+                    @livewire('dashboard.user.create')
                     @livewire('dashboard.user.index')
+
                 </div>
                 <div class="card-footer text-right">
                     <nav aria-label="Page navigation example">
@@ -30,7 +32,6 @@
         </div>
     </div>
 </section>
-
 
 @endsection
 

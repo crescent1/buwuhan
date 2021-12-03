@@ -9,6 +9,15 @@ use Log;
 class Index extends Component
 {
     /**
+     * listener
+     *
+     * @var array
+     */
+    protected $listeners =[
+        // 'addNewUser' => '$refresh'
+    ];
+
+    /**
      * render
      *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
@@ -16,18 +25,8 @@ class Index extends Component
     public function render()
     {
         return view('livewire.dashboard.user.index', [
-            'users' => User::paginate(1),
+            'users' => User::latest()->paginate(10),
         ]);
     }
 
-    /**
-     * Undocumented function
-     *
-     * @return void
-     */
-    public function showAddUser()
-    {
-        $this->dispatchBrowserEvent('showModalUser');
-
-    }
 }
