@@ -11,9 +11,9 @@
             <div class="d-sm-none d-lg-inline-block">Welcome {{Auth::user()->name}}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">Setting</div>
-                {{-- <a href="{{ route('user.edit', Auth::user()->id) }}" class="dropdown-item has-icon">
+                <a href="{{ route('user.edit', Auth::user()->id) }}" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Edit Profile
-                </a> --}}
+                </a>
                 <div class="dropdown-divider"></div>
                 <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger">
                     <i class="fas fa-sign-out-alt"></i> Logout

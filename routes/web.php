@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::get('user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
+    Route::post('user/update/{user}', [UserController::class, 'update'])->name('user.update');
 
     Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda.index');
 
