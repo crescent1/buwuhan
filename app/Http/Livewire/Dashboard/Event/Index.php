@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Event;
 
+use App\Models\Event;
 use Livewire\Component;
 
 class Index extends Component
@@ -14,7 +15,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.dashboard.event.index', [
-            'events' => []
+            'events' => Event::latest()->paginate(10),
         ]);
     }
 }

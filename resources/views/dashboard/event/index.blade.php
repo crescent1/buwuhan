@@ -17,8 +17,8 @@
             <h2 class="section-title">List Event</h2>
             <div class="card">
                 <div class="card-body">
+                    @livewire('dashboard.event.create')
                     @livewire('dashboard.event.index')
-
                 </div>
                 <div class="card-footer text-right">
                     <nav aria-label="Page navigation example">

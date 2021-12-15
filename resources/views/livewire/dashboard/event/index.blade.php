@@ -11,7 +11,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user)
+                @foreach ($events as $user)
                 <tr>
                     <td>{{ $loop->index + $users->firstItem() }}</td>
                     <td>{{ strtoupper($user->name) }}</td>
@@ -35,7 +35,7 @@
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-right">
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-end">
-                {{ $users->links() }}
+                {{ $events->links() }}
             </ul>
         </nav>
     </div>
