@@ -15,7 +15,7 @@ class CreateGuestsTable extends Migration
     {
         Schema::create('guests', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('agenda_id');
+            $table->unsignedBigInteger('event_id');
             $table->unsignedBigInteger('user_id');
             $table->string('gender')->default('');
             $table->string('name')->default('');
@@ -25,7 +25,7 @@ class CreateGuestsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('agenda_id')->references('id')->on('agendas');
+            $table->foreign('event_id')->references('id')->on('events');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

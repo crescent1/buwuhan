@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Guest extends Model
+class Event extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -17,9 +17,6 @@ class Guest extends Model
      */
     protected $fillable = [
         'name',
-        'gender',
-        'district',
-        'money',
-        'item',
+        'date',
     ];
 }

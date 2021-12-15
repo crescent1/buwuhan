@@ -4,21 +4,20 @@
 
 <section class="section sz-section">
     <div class="section-header">
-        <h1>Users</h1>
+        <h1>Events</h1>
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
             <div class="breadcrumb-item"><a href="{{ route('user.index') }}">Users</a></div>
-            <div class="breadcrumb-item">List Users</div>
+            <div class="breadcrumb-item">List Events</div>
         </div>
     </div>
 
     <div class="section-body">
         <div class="col-12 col-sm-12 col-lg-12">
-            <h2 class="section-title">List Users</h2>
+            <h2 class="section-title">List Event</h2>
             <div class="card">
                 <div class="card-body">
-                    @livewire('dashboard.user.create')
-                    @livewire('dashboard.user.index')
+                    @livewire('dashboard.event.index')
 
                 </div>
                 <div class="card-footer text-right">

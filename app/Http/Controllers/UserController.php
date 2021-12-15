@@ -19,16 +19,6 @@ class UserController extends Controller
         return view('dashboard.user.index');
     }
 
-    // public function create()
-    // {
-
-    // }
-
-    // public function store()
-    // {
-
-    // }
-
     /**
      * edit user view
      *
@@ -43,6 +33,13 @@ class UserController extends Controller
 
     }
 
+    /**
+     * update user
+     *
+     * @param UpdateUserRequest $request
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(UpdateUserRequest $request, User $user)
     {
         $validData = $request->validated();
@@ -62,12 +59,5 @@ class UserController extends Controller
 
         return redirect()->route('user.edit', $validData['id'])->with('status', 'User berhasil di update');
 
-
-
     }
-
-    // public function destroy()
-    // {
-
-    // }
 }
