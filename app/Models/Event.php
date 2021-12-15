@@ -16,7 +16,17 @@ class Event extends Model
      * @var string[]
      */
     protected $fillable = [
+        'user_id',
         'name',
         'date',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'date' => 'datetime:Y-m-d H:i',
     ];
 }

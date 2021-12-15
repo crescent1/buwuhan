@@ -4,28 +4,24 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Status</th>
+                    <th>Even</th>
+                    <th>Date</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($events as $user)
+                @foreach ($events as $event)
                 <tr>
-                    <td>{{ $loop->index + $users->firstItem() }}</td>
-                    <td>{{ strtoupper($user->name) }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ ucwords(\App\Enums\UserType::fromValue($user->type)->description) }}</td>
+                    <td>{{ $loop->index + $events->firstItem() }}</td>
+                    <td>{{ strtoupper($event->name) }}</td>
+                    <td>{{ $event->date }}</td>
                     <td>
                         <button type="button" class="btn btn-outline-info"
-                            wire:click="showEditUser({{$user->id}})"
+                            wire:click="showEditUser({{$event->id}})"
                         ><i class="fas fa-user-edit"></i></button>
-                        @if ($user->id !== 1 && Auth::user()->type == 0 && $user->id !== Auth::user()->id)
-                            <button type="button" class="btn btn-outline-danger"
-                                wire:click="showDeleteUser({{$user->id}})"
-                            ><i class="fas fa-trash-alt"></i></button>
-                        @endif
+                        <button type="button" class="btn btn-outline-danger"
+                            wire:click="showDeleteUser({{$event->id}})"
+                        ><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>
                 @endforeach

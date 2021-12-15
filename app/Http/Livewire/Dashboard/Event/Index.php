@@ -8,6 +8,15 @@ use Livewire\Component;
 class Index extends Component
 {
     /**
+     * listener from other componenet
+     *
+     * @var array
+     */
+    protected $listeners = [
+        'EmitAddEvent' => '$refresh'
+    ];
+
+    /**
      * render
      *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
