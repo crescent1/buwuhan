@@ -47,7 +47,7 @@
                             ><i class="fas fa-trash-alt"></i></button>
                         </td>
                         <td>
-                            <a type="button" class="btn btn-outline-success" href="{{route('event.buwuhan', $event->id )}}">Buwuhan</a>
+                            <a type="button" class="btn btn-outline-success" href="{{route('guest.index', $event->id )}}">Buwuhan</a>
                             <a type="button" class="btn btn-outline-success" href="">Undangan</a>
                         </td>
                     </tr>

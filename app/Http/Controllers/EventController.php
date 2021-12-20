@@ -16,16 +16,4 @@ class EventController extends Controller
     {
         return view('dashboard.event.index');
     }
-
-    /**
-     * menu
-     *
-     * @param integer $eventId
-     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
-     */
-    public function menu($eventId)
-    {
-        return view('dashboard.event.buwuhan.index');
-
-    }
 }

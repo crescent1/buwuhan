@@ -8,6 +8,22 @@ use Livewire\Component;
 class Index extends Component
 {
     /**
+     * set eentId
+     *
+     * @var integer
+     */
+    public $eventId;
+
+    /**
+     * listener from other componenet
+     *
+     * @var array
+     */
+    protected $listeners = [
+        'EmitAddBuwuhan' => '$refresh'
+    ];
+
+    /**
      * Undocumented function
      *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory

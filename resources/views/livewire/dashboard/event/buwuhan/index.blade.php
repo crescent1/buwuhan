@@ -6,7 +6,7 @@
                     <th>No</th>
                     <th>Nama</th>
                     <th>Daerah</th>
-                    <th>uang</th>
+                    <th>Uang</th>
                     <th>Item</th>
                     <th>Action</th>
                 </tr>
@@ -15,9 +15,10 @@
                 @foreach ($guests as $guest)
                 <tr>
                     <td>{{ $loop->index + $guests->firstItem() }}</td>
-                    <td>{{ strtoupper($guest->name) }}</td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ strtoupper($guest->gender . ' ' .$guest->name) }}</td>
+                    <td>{{ $guest->district }}</td>
+                    <td>{{ number_format($guest->money, '0', '.', '.') }}</td>
+                    <td>{{ $guest->item }}</td>
                     <td>
                         <button type="button" class="btn btn-outline-info"
                             wire:click="showEditEvent({{$guest->id}})"

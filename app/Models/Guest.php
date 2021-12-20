@@ -49,6 +49,8 @@ class Guest extends Model
      * @var string[]
      */
     protected $fillable = [
+        'event_id',
+        'user_id',
         'name',
         'gender',
         'district',

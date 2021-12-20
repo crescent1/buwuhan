@@ -29,7 +29,7 @@
             </div>
             <div class="col-sm-5">
                 <input type="text" class="form-control @error('name') is-invalid @enderror" required
-                    minlength="3"
+                    minlength="2"
                     maxlength="100"
                     wire:model="state.name"
                 >
@@ -103,6 +103,18 @@
             </div>
         </div>
 
+    @endif
+
+    <br/>
+    @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible show fade col-lg-5 col md-5">
+            <div class="alert-body">
+                <button class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                </button>
+                <i class="far fa-lightbulb"></i> {{ session('success') }}
+            </div>
+        </div>
     @endif
 
     <div class="border-top sz-borderheader2 my-2"></div>
