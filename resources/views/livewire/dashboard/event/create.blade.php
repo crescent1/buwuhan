@@ -30,7 +30,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Date</label>
             <div class="col-sm-4">
-                <input type="datetime-local" class="form-control @error('email') is-invalid @enderror" required autocomplete="off"
+                <input type="datetime-local" class="form-control @error('date') is-invalid @enderror" required autocomplete="off"
                     wire:model="state.date"
                 >
                 <small id="" class="sz-color">

@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
     Route::post('user/update/{user}', [UserController::class, 'update'])->name('user.update');
 
-    Route::get('/agenda', [EventController::class, 'index'])->name('event.index');
+    Route::get('/event', [EventController::class, 'index'])->name('event.index');
+    Route::get('event/buwuhan/{eventId}', [EventController::class, 'menu'])->name('event.buwuhan');
 
 });

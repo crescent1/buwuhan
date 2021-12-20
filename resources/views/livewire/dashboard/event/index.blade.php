@@ -29,6 +29,7 @@
                         <th>Event</th>
                         <th>Date</th>
                         <th>Action</th>
+                        <th>Menu</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,6 +45,10 @@
                             <button type="button" class="btn btn-outline-danger"
                                 wire:click="showDeleteEvent({{$event->id}})"
                             ><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                        <td>
+                            <a type="button" class="btn btn-outline-success" href="{{route('event.buwuhan', $event->id )}}">Buwuhan</a>
+                            <a type="button" class="btn btn-outline-success" href="">Undangan</a>
                         </td>
                     </tr>
                     @endforeach
@@ -75,7 +80,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Date</label>
             <div class="col-sm-4">
-                <input type="datetime-local" class="form-control @error('email') is-invalid @enderror" required autocomplete="off"
+                <input type="datetime-local" class="form-control @error('date') is-invalid @enderror" required autocomplete="off"
                     wire:model="state.date"
                 >
                 <small id="" class="sz-color">

@@ -94,6 +94,11 @@ class Index extends Component
 
     }
 
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public function updateEvent()
     {
         $validData = Validator::make($this->state, [
@@ -106,7 +111,6 @@ class Index extends Component
         $this->hideEditEvent();
 
         session()->flash('updateEvent', 'Event berhasil di update!');
-
 
     }
 
