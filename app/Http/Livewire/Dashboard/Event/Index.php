@@ -4,9 +4,32 @@ namespace App\Http\Livewire\Dashboard\Event;
 
 use App\Models\Event;
 use Livewire\Component;
+use Log;
+use Validator;
 
 class Index extends Component
 {
+    /**
+     * set event id
+     *
+     * @var integer
+     */
+    public $eventId = null;
+
+    /**
+     * set status
+     *
+     * @var boolean
+     */
+    public $status = false;
+
+    /**
+     * set state
+     *
+     * @var array
+     */
+    public $state = [];
+
     /**
      * listener from other componenet
      *
@@ -26,5 +49,74 @@ class Index extends Component
         return view('livewire.dashboard.event.index', [
             'events' => Event::latest()->paginate(10),
         ]);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param integer $eventId
+     * @return void
+     */
+    public function showDeleteEvent($eventId)
+    {
+        $this->eventId = $eventId;
+        $this->dispatchBrowserEvent('showRemoveModalEvent');
+
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function deleteEvent()
+    {
+        Event::whereId($this->eventId)->delete();
+
+        $this->dispatchBrowserEvent('hideRemoveModalEvent');
+
+        session()->flash('deleteEvent', 'Event berhasil di hapus!');
+
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param Event $event
+     * @return void
+     */
+    public function showEditEvent(Event $event)
+    {
+        $this->state = $event->toArray();
+        $this->state['date'] = $event->date->format('Y-m-d\TH:i');
+        $this->eventId = $event->id;
+        $this->status = true;
+
+    }
+
+    public function updateEvent()
+    {
+        $validData = Validator::make($this->state, [
+            'name' => 'required|string|min:3|max:100',
+            'date' => 'required'
+        ])->validate();
+
+        Event::whereId($this->eventId)->update($validData);
+
+        $this->hideEditEvent();
+
+        session()->flash('updateEvent', 'Event berhasil di update!');
+
+
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function hideEditEvent()
+    {
+        $this->status = false;
     }
 }
