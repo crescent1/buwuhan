@@ -117,7 +117,7 @@
                     </div>
                     <div class="modal-footer bg-whitesmoke br">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success"><i class="fas fa-plus-circle"></i> Add</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-plus-circle"></i> Save</button>
                     </div>
                 </form>
             </div>

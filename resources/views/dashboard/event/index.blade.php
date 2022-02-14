@@ -2,8 +2,8 @@
 
 @section('maincontent')
 
-<section class="section sz-section">
-    <div class="section-header">
+<section class="section sz-section mb-n4">
+    <div class="section-header mb-3">
         <h1>Events</h1>
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
@@ -13,22 +13,8 @@
     </div>
 
     <div class="section-body">
-        <div class="col-12 col-sm-12 col-lg-12">
-            <h2 class="section-title">List Event</h2>
-            <div class="card">
-                <div class="card-body">
-                    @livewire('dashboard.event.create')
-                    @livewire('dashboard.event.index')
-                </div>
-                <div class="card-footer text-right">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-end">
-
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
+        @livewire('dashboard.event.create')
+        @livewire('dashboard.event.index')
     </div>
 </section>
 
