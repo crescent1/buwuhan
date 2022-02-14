@@ -22,7 +22,7 @@
             <div class="modal-content">
                 <form wire:submit.prevent="addUser" autocomplete="off" class="needs-validation" novalidate="">
                     <div class="modal-header">
-                        <h5 class="modal-title">Add User</h5>
+                        <h5 class="modal-title text-success"><i class="fas fa-user-edit"></i> Add User</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

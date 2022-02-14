@@ -80,7 +80,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Delete User</h5>
+                    <h5 class="modal-title text-danger"><i class="fas fa-user-edit"></i> Delete User</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -110,7 +110,7 @@
             <div class="modal-content">
                 <form wire:submit.prevent="addUser" autocomplete="off" class="needs-validation" novalidate="">
                     <div class="modal-header">
-                        <h5 class="modal-title">Update User</h5>
+                        <h5 class="modal-title text-info"><i class="fas fa-user-edit"></i> Update User</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
