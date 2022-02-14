@@ -211,6 +211,7 @@
 
     <script>
         window.addEventListener('showModalUser', event => {
+            console.log('test');
             $('#modalCreate').modal('show');
         })
 

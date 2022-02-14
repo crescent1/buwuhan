@@ -57,7 +57,7 @@ class UserController extends Controller
             $user->save();
         }
 
-        return redirect()->route('user.edit', $validData['id'])->with('status', 'User berhasil di update');
+        return redirect()->route('user.edit', $user->id)->with('status', 'User berhasil di update');
 
     }
 }

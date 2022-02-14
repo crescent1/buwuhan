@@ -1,7 +1,7 @@
 <div>
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-right">
         <button type="button" class="btn btn-success"
-            wire:click.privent="showAddUser"
+            wire:click.prevent="showAddUser"
         ><i class="fas fa-plus-circle"></i> Add User</button>
     </div>
     <br/>
