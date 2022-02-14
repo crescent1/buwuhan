@@ -1,64 +1,78 @@
 <div>
-    @if (session()->has('updateUser'))
-        <div class="alert alert-success alert-dismissible show fade col-lg-5 col md-5">
-            <div class="alert-body">
-                <button class="close" data-dismiss="alert">
-                    <span>&times;</span>
-                </button>
-                <i class="far fa-lightbulb"></i> {{ session('updateUser') }}
+    <div class="card card-success">
+        <div class="card-header">
+            <div class="col-6 col-sm-8 col-md-9 pl-0">
+                <h4 class="text-success"><i class="fas fa-th-list"></i> List Users</h4>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 pr-0">
+                <input class="form-control border border-success" type="text" minlength="1" maxlength="100" placeholder="Search Name . . ."
+                    wire:model="searchName"
+                >
             </div>
         </div>
-    @endif
-    @if (session()->has('deleteUser'))
-        <div class="alert alert-danger alert-dismissible show fade col-lg-5 col md-5">
-            <div class="alert-body">
-                <button class="close" data-dismiss="alert">
-                    <span>&times;</span>
-                </button>
-                <i class="far fa-lightbulb"></i> {{ session('deleteUser') }}
+        <div class="card-body pt-0">
+            @if (session()->has('updateUser'))
+                <div class="alert alert-success alert-dismissible show fade col-lg-5 col md-5">
+                    <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                            <span>&times;</span>
+                        </button>
+                        <i class="far fa-lightbulb"></i> {{ session('updateUser') }}
+                    </div>
+                </div>
+            @endif
+            @if (session()->has('deleteUser'))
+                <div class="alert alert-danger alert-dismissible show fade col-lg-5 col md-5">
+                    <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                            <span>&times;</span>
+                        </button>
+                        <i class="far fa-lightbulb"></i> {{ session('deleteUser') }}
+                    </div>
+                </div>
+            @endif
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-sm">
+                    <thead class="bg-success text-center">
+                        <tr>
+                            <th class="text-white">No</th>
+                            <th class="text-white">Name</th>
+                            <th class="text-white">Email</th>
+                            <th class="text-white">Status</th>
+                            <th class="text-white">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($users as $user)
+                        <tr class="text-center">
+                            <td>{{ $loop->index + $users->firstItem() }}</td>
+                            <td class="text-left">{{ strtoupper($user->name) }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ ucwords(\App\Enums\UserType::fromValue($user->type)->description) }}</td>
+                            <td class="text-left">
+                                <button type="button" class="btn btn-outline-info"
+                                    wire:click="showEditUser({{$user->id}})"
+                                ><i class="fas fa-user-edit"></i></button>
+                                @if ($user->id !== 1 && Auth::user()->type == 0 && $user->id !== Auth::user()->id)
+                                    <button type="button" class="btn btn-outline-danger"
+                                        wire:click="showDeleteUser({{$user->id}})"
+                                    ><i class="fas fa-trash-alt"></i></button>
+                                @endif
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-        </div>
-    @endif
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-right">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end">
+                        {{ $users->links() }}
+                    </ul>
+                </nav>
+            </div>
 
-    <div class="table-responsive mt-2">
-        <table class="table table-striped" id="sortable-table">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($users as $user)
-                <tr>
-                    <td>{{ $loop->index + $users->firstItem() }}</td>
-                    <td>{{ strtoupper($user->name) }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ ucwords(\App\Enums\UserType::fromValue($user->type)->description) }}</td>
-                    <td>
-                        <button type="button" class="btn btn-outline-info"
-                            wire:click="showEditUser({{$user->id}})"
-                        ><i class="fas fa-user-edit"></i></button>
-                        @if ($user->id !== 1 && Auth::user()->type == 0 && $user->id !== Auth::user()->id)
-                            <button type="button" class="btn btn-outline-danger"
-                                wire:click="showDeleteUser({{$user->id}})"
-                            ><i class="fas fa-trash-alt"></i></button>
-                        @endif
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-right">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-end">
-                {{ $users->links() }}
-            </ul>
-        </nav>
+        </div>
     </div>
 
     {{-- Modal Delete --}}
@@ -90,14 +104,13 @@
         </div>
     </div>
 
-
     {{-- modal edit --}}
     <div class="modal fade" tabindex="-1" role="dialog" id="modalEdit" wire:ignore.self>
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <form wire:submit.prevent="addUser" autocomplete="off" class="needs-validation" novalidate="">
                     <div class="modal-header">
-                        <h5 class="modal-title">Delete User</h5>
+                        <h5 class="modal-title">Update User</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -198,7 +211,7 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-info"
                             wire:click.prevent="updateUser"
-                        ><i class="fas fa-trash-alt"></i> Update</button>
+                        ><i class="fas fa-save"></i> Update</button>
                     </div>
                 </form>
             </div>

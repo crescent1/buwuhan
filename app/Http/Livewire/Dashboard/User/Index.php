@@ -10,11 +10,18 @@ use Validator;
 class Index extends Component
 {
     /**
-     * Undocumented variable
+     * set state
      *
      * @var array $state
      */
     public $state;
+
+    /**
+     * set searchName
+     *
+     * @var string
+     */
+    public $searchName;
 
     /**
      * Undocumented variable
@@ -46,8 +53,17 @@ class Index extends Component
      */
     public function render()
     {
+        /**
+         * @var User
+         */
+        $users = User::query();
+
+        if ($this->searchName) {
+            $users->where('name', 'like', '%' . $this->searchName . '%');
+        }
+
         return view('livewire.dashboard.user.index', [
-            'users' => User::latest()->paginate(10),
+            'users' => $users->paginate(10),
         ]);
     }
 

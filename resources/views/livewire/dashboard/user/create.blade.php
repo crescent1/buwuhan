@@ -1,10 +1,10 @@
 <div>
-    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-right">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-2 p-0">
         <button type="button" class="btn btn-success"
             wire:click.prevent="showAddUser"
         ><i class="fas fa-plus-circle"></i> Add User</button>
     </div>
-    <br/>
+
     @if (session()->has('newUser'))
         <div class="alert alert-success alert-dismissible show fade col-lg-5 col md-5">
             <div class="alert-body">
