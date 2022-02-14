@@ -31,6 +31,13 @@ class Index extends Component
     public $state = [];
 
     /**
+     * set searchEvent
+     *
+     * @var string
+     */
+    public $searchEvent;
+
+    /**
      * listener from other componenet
      *
      * @var array
@@ -46,8 +53,14 @@ class Index extends Component
      */
     public function render()
     {
+        $events = Event::query();
+
+        if ($this->searchEvent) {
+            $events->where('name', 'like', '%' . $this->searchEvent . '%');
+        }
+
         return view('livewire.dashboard.event.index', [
-            'events' => Event::latest()->paginate(10),
+            'events' => $events->paginate(10),
         ]);
     }
 

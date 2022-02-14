@@ -27,7 +27,7 @@
                     <li class="{{Route::currentRouteName() == 'user.index' ? 'active': ''}}"><a class="nav-link" href="{{ route('user.index') }}"><i class="fas fa-users"></i><span>Users</span></a></li>
                 @endif
                 @if (Auth::user()->type == 0 || Auth::user()->type == 1)
-                    <li class="{{Route::currentRouteName() == 'event.index' ? 'active': ''}}"><a class="nav-link" href="{{ route('event.index') }}"><i class="fas fa-calendar-alt"></i><span>Acara</span></a></li>
+                    <li class="{{Route::currentRouteName() == 'event.index' ? 'active': ''}}"><a class="nav-link" href="{{ route('event.index') }}"><i class="fas fa-calendar-alt"></i><span>Events</span></a></li>
                 @endif
             @endif
         </ul>
