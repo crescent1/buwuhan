@@ -1,8 +1,8 @@
 <div>
     <div class="card card-primary">
         <div class="card-body">
-            <h6 class="text-primary"><i class="fas fa-th-list"></i> List Buwuhan</h6>
             @if ($status == false)
+            <h6 class="text-primary"><i class="fas fa-th-list"></i> List Buwuhan</h6>
             <div class="table-responsive mt-2">
                 <table class="table table-sm table-striped">
                     <thead>
