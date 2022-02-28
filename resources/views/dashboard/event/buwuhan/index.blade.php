@@ -13,22 +13,8 @@
     </div>
 
     <div class="section-body">
-        <div class="col-12 col-sm-12 col-lg-12">
-            <h2 class="section-title">List Buwuhan</h2>
-            <div class="card">
-                <div class="card-body">
-                    @livewire('dashboard.event.buwuhan.create', ['eventId' => $eventId])
-                    @livewire('dashboard.event.buwuhan.index', ['eventId' => $eventId])
-                </div>
-                <div class="card-footer text-right">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-end">
-
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
+        @livewire('dashboard.event.buwuhan.create', ['eventId' => $eventId])
+        @livewire('dashboard.event.buwuhan.index', ['eventId' => $eventId])
     </div>
 </section>
 
