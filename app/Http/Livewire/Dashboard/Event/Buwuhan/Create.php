@@ -99,7 +99,7 @@ class Create extends Component
         Guest::create($validData);
 
         $this->emit('EmitAddBuwuhan');
-        $this->hideBuwuhan();
+        $this->state = [];
         session()->flash('success', 'Buwuhan berhasil ditambah');
     }
 }

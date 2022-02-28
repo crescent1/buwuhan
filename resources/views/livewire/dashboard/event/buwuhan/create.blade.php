@@ -1,4 +1,11 @@
 <div>
+    @if ($status == false)
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-2 ml-n3">
+            <button type="button" class="btn btn-success"
+                wire:click.privent="showBuwuhan"
+            ><i class="fas fa-plus-circle"></i> Add Buwuhan</button>
+        </div>
+    @else
     <div class="card card-success">
         <div class="card-body">
             <h6 class="text-success"><i class="fas fa-user-plus"></i> Add Buwuhan</h6>
@@ -101,6 +108,7 @@
 
         </div>
     </div>
+    @endif
 
     @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible show fade col-lg-5 col md-5">
